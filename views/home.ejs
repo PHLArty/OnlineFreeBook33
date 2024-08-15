@@ -1,0 +1,76 @@
+<%- include('partials/header.ejs') %>
+
+<!-- <section id="allbooks">
+<div class="abook" data-rating="10" data-title="You Can Negotiate Anything - by Herb Cohen" data-date=>
+    <figure><a href="/book/NegotiateAnything"><img src="/images/book/NegotiateAnything.webp" loading="lazy" alt="You Can Negotiate Anything - by Herb Cohen"></a></figure>
+    <h2><a href="/book/NegotiateAnything">You Can Negotiate Anything - by Herb Cohen</a></h2>
+    <small>Date read: 2023-08-02. How strongly I recommend it: <strong>10</strong>/10</small>
+    <p>Everything is negotiable. Challenge authority. You have the power in any situation. This is how to realize it and use it. A must-read classic from 1980 from a master negotiator. My notes here aren’t enough because the little book is filled with so many memorable stories — examples of great day-to-day moments of negotiation that will stick in your head for when you need them. (I especially loved the one about the power of the prisoner in solitary confinement.) So go buy and read the book. I’m giving it a 10/10 rating even though the second half of the book loses steam, because the first half is so crucial.
+    </p><p><strong><a href="/book/NegotiateAnything">Read my notes</a></strong>, or go to the <a href="https://www.amazon.com/s?k=0806541229&amp;tag=sivers-20">Amazon page</a> for details and reviews.
+    </p></div>
+</section> -->
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Derek Sivers</h1>
+        <p class="lead text-muted">
+          Sort by 
+          <a href="/book?sort=title" id="sort-title">title</a>
+          <a href="/book?sort=newest" id="sort-newest">newest</a>
+          <a href="/book?sort=best" id="sort-best">best</a>
+        </p>
+        <p>
+          <a href="/contact" class="btn btn-primary my-2">Email me</a>
+          <a href="/bfaq" class="btn btn-secondary my-2">This FAQ  page</a>
+        </p>
+      </div>
+    </div>
+  </section>
+  <% if(locals.books){ %>
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <!-- for all book here -->
+         <% for(let i=0 ;i<books.length; i++){%>
+        <div class="col">
+          <div class="card shadow-sm">
+          <a href="/view/<%= books[i].id %>">
+            <div class="image-container">
+            <img src=<%= img[i] %> alt="This is image" style="width: 100%; height:70%">
+          </div>
+        </a>
+            <h3><%= books[i].title %></h3>
+            <div class="card-body">
+              <p class="card-text"><%= books[i].description %></p>
+              <p class="card-text">Rate of admin: <%= books[i].rate %>/10</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="/update/<%= books[i].id %>"> 
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Update</button>
+                </a>
+                <div class="btn-group">
+                  <a href="/view/<%= books[i].id %>"> 
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                </a>
+                  <a href=<%= books[i].linkamazonpage %>>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" >Amazon page</button>
+                  </a>
+                  
+                </div>
+                
+              </div>
+              <small class="text-muted">Date read: <%= books[i].dateread.toLocaleDateString("de-DE") %></small>
+            </div>
+          </div>
+        </div>
+        <% }; %>
+      </div>
+    </div>
+  </div>
+  <% } %>
+
+
+<%- include('partials/footer.ejs') %>
+<script src="/styles/js/script.js"></script>

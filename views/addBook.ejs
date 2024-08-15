@@ -1,0 +1,62 @@
+<%- include('partials/header.ejs') %>
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Derek Sivers</h1>
+      <p class="lead text-muted">
+        Sort by 
+        <a href="/book?sort=title" id="sort-title">title</a>
+        <a href="/book?sort=newest" id="sort-newest">newest</a>
+        <a href="/book?sort=best" id="sort-best">best</a>
+      </p>
+      <p>
+        <a href="/contact" class="btn btn-primary my-2">Email me</a>
+        <a href="/bfaq" class="btn btn-secondary my-2">This FAQ  page</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<form action="/add" method="post">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" placeholder="Ex: Shelock holmes" name="title">
+    </div>
+    <div class="form-group">
+        <label for="rate">Title</label>
+        <input type="number" class="form-control" id="rate" placeholder="Value 1 to 10" name="rate">
+      </div>
+    <div class="form-group">
+      <label for="key">Key</label>
+      <select class="form-control" id="key" name="key">
+        <option>ID</option>
+        <option>OLID</option>       
+        <option>ISBN</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="value">Value</label>
+        <input type="text" class="form-control" id="value" placeholder="Ex: OL7440033M" name="value">
+      </div>
+      <div class="form-group">
+        <label for="size">Choose size</label>
+        <select class="form-control" id="size" name="size">
+          <option>M</option>
+        </select>
+      </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="detailDescription">Detail description</label>
+        <textarea class="form-control" id="detailDescription" rows="3" name="detailDescription"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="linkAmazonPage">Link amazon</label>
+        <input type="text" class="form-control" id="linkAmazonPage" placeholder="link web amazon this book." name="linkAmazonPage">
+      </div>
+      <button type="submit" class="btn btn-primary">Add book</button>
+  </form>
+<%- include('partials/footer.ejs') %>
+<script src="/styles/js/script.js"></script>

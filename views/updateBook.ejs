@@ -1,0 +1,67 @@
+<%- include('partials/header.ejs') %>
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Derek Sivers</h1>
+      <p class="lead text-muted">
+        Sort by 
+        <a href="/book?sort=title" id="sort-title">title</a>
+        <a href="/book?sort=newest" id="sort-newest">newest</a>
+        <a href="/book?sort=best" id="sort-best">best</a>
+      </p>
+      <p>
+        <a href="/contact" class="btn btn-primary my-2">Email me</a>
+        <a href="/bfaq" class="btn btn-secondary my-2">This FAQ  page</a>
+      </p>
+    </div>
+  </div>
+</section>
+<% if(locals.book && !checkValue){ %>
+<form action="/update/<%= book.id %>" method="post">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" value="<%= book.name %>" name="title">
+    </div>
+    <div class="form-group">
+        <label for="rate">Title</label>
+        <input type="number" class="form-control" id="rate" value="<%= book.rate %>" name="rate">
+      </div>
+    <div class="form-group">
+      <label for="key">Key</label>
+      <select class="form-control" id="key" name="key" value="<%= book.key %>">
+        <option>id</option>
+        <option>olid</option>
+        <option>ISBN</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="value">Value</label>
+        <input type="text" class="form-control" id="value" placeholder="Ex: OL7440033M" name="value" value="<%= book.value %>">
+      </div>
+      <div class="form-group">
+        <label for="size">Choose size</label>
+        <select class="form-control" id="size" name="size" value="<%= book.size %>">
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>    
+        </select>
+      </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" rows="3" name="description"><%= book.description %></textarea>
+    </div>
+    <div class="form-group">
+        <label for="detailDescription">Detail description</label>
+        <textarea class="form-control" id="detailDescription" rows="3" name="detailDescription"><%= book.detaildescription %></textarea>
+      </div>
+      <div class="form-group">
+        <label for="linkAmazonPage">Link amazon</label>
+        <input type="text" class="form-control" id="linkAmazonPage" name="linkAmazonPage" value="<%= book.linkamazonpage %>">
+      </div>
+      <button type="submit" class="btn btn-primary">Update book</button>
+  </form>
+<% } else{%>
+  <h1>Please back page</h1>
+<% } %>
+<%- include('partials/footer.ejs') %>
+<script src="/styles/js/script.js"></script>

@@ -1,0 +1,41 @@
+<%- include('partials/header.ejs') %>
+
+<% if(locals.book){ %>
+  <div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="images p-3">
+                            <div class="text-center p-4"> <img id="main-image" src="<%= img[book.id] %>" width="250" /> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="product p-4">
+                            <a href="/" style="text-decoration: none;">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i> <span class="ml-1">Back</span> </div> <i class="fa fa-shopping-cart text-muted"></i>
+                            </div>
+                        </a>
+                                <h5 class="text-uppercase"><%= book.name %></h5>
+                            </div>
+                            <p class="about"><%= book.detaildescription %></p>
+                            <div class="sizes mt-5">
+                                <h6 class="text-uppercase">Size</h6>  <label class="radio"> <input type="radio" name="size" value="<%= book.size %>"> <span><%= book.size %></span> </label>
+                            </div>
+                            <a href=<%= book.linkamazonpage %>>
+                            <div class="cart mt-4 align-items-center"> <button class="btn btn-danger text-uppercase mr-2 px-4">Amazon Page</button> </div>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <% } %>
+  
+  
+  <%- include('partials/footer.ejs') %>
+  <script src="/styles/js/script.js"></script>
